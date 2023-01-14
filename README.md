@@ -1,5 +1,5 @@
 # telnetConnect
 Connecting to Router and Switch using telnet
 
-# tistory link
+# Blog link
 <https://itstoryy.tistory.com/7>
