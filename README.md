@@ -1,5 +1,8 @@
-# telne을 이용한 네트워크 장비 원격접속 프로그램
-Connecting to Router and Switch using telnet
+# 개발 목표
+수업시간에 얕게 배운 telnet접속과 MySQL 사용법을 응용해서 더 개선을 시키고 어느 사용자라도 DB없이도 프로그램 하나만 실행시키면 이용할 수 있도록 구현
 
-# Blog link
+# 프로젝트 설명
+DB에 라우터, 스위치의 정보를 저장한 후 호출 시 바로 불러와서 텔넷으로 원격접속이 가능하게 한다.
+
+# 더 자세한 내용
 <https://itstoryy.tistory.com/7>
