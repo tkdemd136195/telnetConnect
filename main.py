@@ -13,7 +13,7 @@ import sqlite3
 con = sqlite3.connect('infra.db')
 cur = con.cursor()
 class Ui_Dialog(object):
-    #sql syntax
+    #sql 구문 
     sql_select_id = '''select id from devicetbl'''
     sql_select_all = '''select * from devicetbl'''
     sql_create = '''create table IF NOT EXISTS devicetbl(
@@ -158,7 +158,7 @@ class Ui_Dialog(object):
         self.pushButton_2.setText(_translate("Dialog", "Clear"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "Telnet connect"))
 
-    # create DB table if not exist
+    # DB테이블 없을 때 생성
     def create_table(self):
         cur.execute(self.sql_create)
         a = cur.execute(self.sql_select_all).fetchall()
@@ -166,7 +166,7 @@ class Ui_Dialog(object):
             cur.execute(self.sql_insert_example)
         con.commit()
 
-    # refresh first page
+    # 첫번째 페이지 목록 갱신
     def refreshDB(self):
         self.tableWidget.clear()
         cur.execute(self.sql_select_all)
@@ -179,7 +179,7 @@ class Ui_Dialog(object):
                 self.tableWidget.setItem(cnt, num, QtWidgets.QTableWidgetItem(str(sqlfetchhall[cnt][num])))
         self.refreshDB2()
 
-    # refresh second page
+    # 두번째 페이지 목록 갱신
     def refreshDB2(self):
         self.tableWidget_2.clear()
         cur.execute(self.sql_select_all)
@@ -192,14 +192,14 @@ class Ui_Dialog(object):
                 self.tableWidget_2.setItem(cnt, num, QtWidgets.QTableWidgetItem(str(sqlfetchhall[cnt][num])))
         self.sqlData()
 
-    # checkbox_id_value
+    # 체크박스 값
     def sqlData(self):
         self.comboBox_2.clear()
         listI = cur.execute(self.sql_select_all).fetchall()
         for i in range(len(listI)):
             self.comboBox_2.addItem(str(listI[i][0]))
 
-    # add button
+    # 데이터 추가 
     def add_data(self):
         if self.ID_5.text() == "":
             self.label_34.setText("Id value not entered")
@@ -225,7 +225,7 @@ class Ui_Dialog(object):
         self.Password_5.clear()
         self.label_34.setText("Data add Success")
 
-    # update button
+    # 데이터 수정 버튼
     def update_data(self):
         if self.ID_5.text() == "":
             self.label_34.setText("Id value not entered")
@@ -255,7 +255,7 @@ class Ui_Dialog(object):
         self.Password_5.clear()
         self.label_34.setText("Data update Success")
 
-    # delete button
+    # 데이터 삭제 버튼
     def delete_data(self):
         if self.ID_5.text() == "":
             self.label_34.setText("Id value not entered")
@@ -281,7 +281,7 @@ class Ui_Dialog(object):
         self.refreshDB()
         self.label_34.setText("Data delete Success")
 
-    # connect Telnet
+    # 텔넷 접속
     def conTel(self):
         val = self.comboBox_2.currentText()
         cur.execute(self.sql_contel, val)
@@ -307,7 +307,7 @@ class Ui_Dialog(object):
         tn.write(b"exit\n")
         self.textEdit.setText(str(tn.read_all().decode('ascii'))[2:])
 
-    # clear txt
+    # 결과창 공백으로
     def clearButton(self):
         self.textEdit.clear()
 
