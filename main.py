@@ -170,26 +170,26 @@ class Ui_Dialog(object):
     def refreshDB(self):
         self.tableWidget.clear()
         cur.execute(self.sql_select_all)
-        sqlfetchhall = cur.fetchall()
-        self.tableWidget.setRowCount(len(sqlfetchhall))
+        sqlfetchall = cur.fetchall()
+        self.tableWidget.setRowCount(len(sqlfetchall))
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setHorizontalHeaderLabels(pd.read_sql("select * from devicetbl", con))
-        for cnt in range(len(sqlfetchhall)):
+        for cnt in range(len(sqlfetchall)):
             for num in range(0, 5, 1):
-                self.tableWidget.setItem(cnt, num, QtWidgets.QTableWidgetItem(str(sqlfetchhall[cnt][num])))
+                self.tableWidget.setItem(cnt, num, QtWidgets.QTableWidgetItem(str(sqlfetchall[cnt][num])))
         self.refreshDB2()
 
     # 두번째 페이지 목록 갱신
     def refreshDB2(self):
         self.tableWidget_2.clear()
         cur.execute(self.sql_select_all)
-        sqlfetchhall = cur.fetchall()
-        self.tableWidget_2.setRowCount(len(sqlfetchhall))
+        sqlfetchall = cur.fetchall()
+        self.tableWidget_2.setRowCount(len(sqlfetchall))
         self.tableWidget_2.setColumnCount(5)
         self.tableWidget_2.setHorizontalHeaderLabels(pd.read_sql("select * from devicetbl", con))
-        for cnt in range(len(sqlfetchhall)):
+        for cnt in range(len(sqlfetchall)):
             for num in range(0, 5, 1):
-                self.tableWidget_2.setItem(cnt, num, QtWidgets.QTableWidgetItem(str(sqlfetchhall[cnt][num])))
+                self.tableWidget_2.setItem(cnt, num, QtWidgets.QTableWidgetItem(str(sqlfetchall[cnt][num])))
         self.sqlData()
 
     # 체크박스 값
